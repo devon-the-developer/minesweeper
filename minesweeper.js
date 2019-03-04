@@ -96,7 +96,7 @@ function checkForWin () {
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
-  howManyMinesAround = 0;
+  var howManyMinesAround = 0;
   var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
   for (var i = 0; i < surroundingCells.length; i++) {
     if (surroundingCells[i].isMine === true) {
