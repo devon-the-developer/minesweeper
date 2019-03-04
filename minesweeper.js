@@ -76,11 +76,34 @@ function startGame () {
   lib.initBoard()
 }
 
+document.addEventListener('click', checkForWin);
+
+
 // Define this function to look for a win condition:
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin () {
+  var countOfMarkedMines = 0;
+  var countOfTotalMines = 0;
+
+  for (var i = 0; i < board.cells.length; i++) {
+    if (board.cells[i].isMine === true) {
+      countOfTotalMines++;
+    }
+    if (board.cells[i].isMine === true && board.cells[i].isMarked === true) {
+      countOfMarkedMines++;
+    }
+    if (board.cells[i].hidden === true && board.cells[i].isMine === false) {
+      return;
+    }
+  }
+
+  if (countOfMarkedMines === countOfTotalMines) {
+    lib.displayMessage('You Win!!');
+  } else {
+    return;
+  }
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
