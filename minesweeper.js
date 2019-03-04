@@ -101,11 +101,9 @@ function countSurroundingMines (cell) {
   for (var i = 0; i < surroundingCells.length; i++) {
     if (surroundingCells[i].isMine === true) {
       howManyMinesAround++;
-    }
-    return howManyMinesAround;
-  } 
+    } 
+  }
   console.log(howManyMinesAround);
-  console.log(surroundingCells);
-
+  return howManyMinesAround;
 }
 
