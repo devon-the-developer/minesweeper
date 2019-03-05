@@ -130,3 +130,26 @@ function countSurroundingMines (cell) {
   return howManyMinesAround;
 }
 
+//Helps Automatically generate board
+//Object Constructor for Cells
+function Cell(rowNum, colNum, mine) {
+  this.row = rowNum;
+  this.col = colNum;
+  this.isMine = mine;
+  this.isMarked = false;
+  this.hidden = true;
+}
+
+function generateCells() {
+  board.cells.push(Cell(0, 0, false));
+  board.cells.push(Cell(0, 1, false));
+  board.cells.push(Cell(0, 2, false));
+  
+  board.cells.push(Cell(1, 0, false));
+  board.cells.push(Cell(1, 1, true));
+  board.cells.push(Cell(1, 2, true));
+
+  board.cells.push(Cell(2, 0, false));
+  board.cells.push(Cell(2, 1, true));
+  board.cells.push(Cell(2, 2, false));
+}
