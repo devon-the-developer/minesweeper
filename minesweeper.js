@@ -2,69 +2,6 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
  var board = { cells: [
-    {
-      row: 0, 
-      col: 0, 
-      isMine: false, 
-      isMarked: false,
-      hidden: true
-    }, 
-    {
-      row: 0, 
-      col: 1, 
-      isMine: false, 
-      isMarked: false,
-      hidden: true
-    }, 
-    {
-      row: 0, 
-      col: 2, 
-      isMine: false,
-      isMarked: false, 
-      hidden: true
-    }, 
-    {
-      row: 1, 
-      col: 0, 
-      isMine: false,
-      isMarked: false,
-      hidden: true
-    },
-    {
-      row: 1, 
-      col: 1, 
-      isMine: true,
-      isMarked: false,
-      hidden: true
-    },
-    {
-      row: 1, 
-      col: 2, 
-      isMine: true,
-      isMarked: false,
-      hidden: true
-    },
-    {
-      row: 2, 
-      col: 0, 
-      isMine: false,
-      isMarked: false,
-      hidden: true
-    },
-    {
-      row: 2, 
-      col: 1, 
-      isMine: true,
-      isMarked: false,
-      hidden: true
-    },
-    {
-      row: 2, 
-      col: 2, 
-      isMine: false,
-      isMarked: false,
-      hidden: true
-    }
 
   ]};
 
@@ -76,6 +13,10 @@ function startGame () {
   lib.initBoard()
 }
 
+//Pushes cells into board variable
+generateCells(); 
+
+//Check to see if player has won
 document.addEventListener('click', checkForWin);
 
 
@@ -126,7 +67,6 @@ function countSurroundingMines (cell) {
       howManyMinesAround++;
     } 
   }
-  console.log(howManyMinesAround);
   return howManyMinesAround;
 }
 
@@ -140,16 +80,17 @@ function Cell(rowNum, colNum, mine) {
   this.hidden = true;
 }
 
+//makes new Cell objects and pushes them into var board's cells property
 function generateCells() {
-  board.cells.push(Cell(0, 0, false));
-  board.cells.push(Cell(0, 1, false));
-  board.cells.push(Cell(0, 2, false));
+  board.cells.push(new Cell(0, 0, false));
+  board.cells.push(new Cell(0, 1, false));
+  board.cells.push(new Cell(0, 2, false));
   
-  board.cells.push(Cell(1, 0, false));
-  board.cells.push(Cell(1, 1, true));
-  board.cells.push(Cell(1, 2, true));
+  board.cells.push(new Cell(1, 0, false));
+  board.cells.push(new Cell(1, 1, true));
+  board.cells.push(new Cell(1, 2, true));
 
-  board.cells.push(Cell(2, 0, false));
-  board.cells.push(Cell(2, 1, true));
-  board.cells.push(Cell(2, 2, false));
+  board.cells.push(new Cell(2, 0, false));
+  board.cells.push(new Cell(2, 1, true));
+  board.cells.push(new Cell(2, 2, false));
 }
