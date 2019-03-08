@@ -2,22 +2,24 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
  var board = { cells: [
-
+    
   ]};
+generateCells(); 
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
   for (var i = 0; i < board.cells.length; i++){
    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
   }
+  
   lib.initBoard()
 }
 
-//Pushes cells into board variable
-generateCells(); 
 
 //Check to see if player has won
 document.addEventListener('click', checkForWin);
+
+//document.getElementById('resetButton').addEventListener('click', resetBoard);
 
 
 // Define this function to look for a win condition:
@@ -35,9 +37,9 @@ function checkForWin () {
     if (board.cells[i].isMine === true && board.cells[i].isMarked === true) {
       countOfMarkedMines++;
     }
-    if (board.cells[i].hidden === true && board.cells[i].isMine === false) {
-      return;
-    }
+    //if (board.cells[i].hidden === true && board.cells[i].isMine === false) {
+     // return;
+    //}
   }
 
   if (countOfMarkedMines === countOfTotalMines) {
@@ -93,4 +95,8 @@ function generateCells() {
   board.cells.push(new Cell(2, 0, false));
   board.cells.push(new Cell(2, 1, true));
   board.cells.push(new Cell(2, 2, false));
+}
+
+function resetBoard() {
+  document.location.reload()
 }
