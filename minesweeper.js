@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', startGame)
  var board = { cells: [
     
   ]};
-generateCells(); 
+  generateCells(); 
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -19,7 +19,6 @@ function startGame () {
 //Check to see if player has won
 document.addEventListener('click', checkForWin);
 
-//document.getElementById('resetButton').addEventListener('click', resetBoard);
 
 
 // Define this function to look for a win condition:
@@ -84,26 +83,50 @@ function Cell(rowNum, colNum, mine) {
 
 //makes new Cell objects and pushes them into var board's cells property
 function generateCells() {
-  board.cells.push(new Cell(0, 0, false));
-  board.cells.push(new Cell(0, 1, false));
-  board.cells.push(new Cell(0, 2, false));
-  board.cells.push(new Cell(0, 3, false));
+  board.cells.push(new Cell(0, 0, mineOrNot()));
+  board.cells.push(new Cell(0, 1, mineOrNot()));
+  board.cells.push(new Cell(0, 2, mineOrNot()));
+  board.cells.push(new Cell(0, 3, mineOrNot()));
   
-  board.cells.push(new Cell(1, 0, false));
-  board.cells.push(new Cell(1, 1, true));
-  board.cells.push(new Cell(1, 2, true));
-  board.cells.push(new Cell(1, 3, false));
+  board.cells.push(new Cell(1, 0, mineOrNot()));
+  board.cells.push(new Cell(1, 1, mineOrNot()));
+  board.cells.push(new Cell(1, 2, mineOrNot()));
+  board.cells.push(new Cell(1, 3, mineOrNot()));
 
-  board.cells.push(new Cell(2, 0, false));
-  board.cells.push(new Cell(2, 1, true));
-  board.cells.push(new Cell(2, 2, false));
-  board.cells.push(new Cell(2, 3, false));
+  board.cells.push(new Cell(2, 0, mineOrNot()));
+  board.cells.push(new Cell(2, 1, mineOrNot()));
+  board.cells.push(new Cell(2, 2, mineOrNot()));
+  board.cells.push(new Cell(2, 3, mineOrNot()));
 
-  board.cells.push(new Cell(3, 0, false));
-  board.cells.push(new Cell(3, 1, false));
-  board.cells.push(new Cell(3, 2, false));
-  board.cells.push(new Cell(3, 3, false));
+  board.cells.push(new Cell(3, 0, mineOrNot()));
+  board.cells.push(new Cell(3, 1, mineOrNot()));
+  board.cells.push(new Cell(3, 2, mineOrNot()));
+  board.cells.push(new Cell(3, 3, mineOrNot()));
 }
+
+//Way of randomising where the mines appear, 1/3rd chance of a tile having a mine
+function mineOrNot() { 
+  var randomNum = Math.floor(Math.random() * 9) 
+  if (randomNum === 0 || randomNum === 1 || randomNum === 2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+/*function betterGenerateCells() {
+  var sizeOfBoard = 17;
+  var counterOne = 0;
+  var counterTwo = 0;
+  for (i = 0; i < sizeOfBoard; i++) {
+    if (counterTwo === 4) {
+      counterOne++;
+      counterTwo = 0;
+    }
+    board.cells.push(new Cell(counterOne, counterTwo, mineOrNot()));
+    counterTwo++;
+    console.log(counterTwo);
+  }
+} */
 
 function resetBoard() {
   document.location.reload()
