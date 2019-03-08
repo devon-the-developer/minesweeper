@@ -87,14 +87,22 @@ function generateCells() {
   board.cells.push(new Cell(0, 0, false));
   board.cells.push(new Cell(0, 1, false));
   board.cells.push(new Cell(0, 2, false));
+  board.cells.push(new Cell(0, 3, false));
   
   board.cells.push(new Cell(1, 0, false));
   board.cells.push(new Cell(1, 1, true));
   board.cells.push(new Cell(1, 2, true));
+  board.cells.push(new Cell(1, 3, false));
 
   board.cells.push(new Cell(2, 0, false));
   board.cells.push(new Cell(2, 1, true));
   board.cells.push(new Cell(2, 2, false));
+  board.cells.push(new Cell(2, 3, false));
+
+  board.cells.push(new Cell(3, 0, false));
+  board.cells.push(new Cell(3, 1, false));
+  board.cells.push(new Cell(3, 2, false));
+  board.cells.push(new Cell(3, 3, false));
 }
 
 function resetBoard() {
